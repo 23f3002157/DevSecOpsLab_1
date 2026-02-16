@@ -11,7 +11,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        node-version: [18.x, 20.x]          # Or update to [20.x, 22.x] if you prefer current LTS
+        node-version: [18.x, 20.x]
 
     steps:
       - name: Checkout Code
@@ -21,13 +21,13 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: ${{ matrix.node-version }}
-          cache: 'npm'                      # Optional: speeds up repeated runs
+          cache: 'npm'
 
       - name: Install Dependencies
-        run: npm install                    # Safe even with no dependencies
+        run: npm install
 
       - name: Run Unit Tests
-        run: node test.js                   # Replace with real test command later (e.g. npm test)
+        run: npm test   # or node test.js — both work now
 
       - name: Run Security Check
         run: node app.js
@@ -35,7 +35,7 @@ jobs:
           WEATHER_API_KEY: ${{ secrets.WEATHER_API_KEY }}
 
   package:
-    needs: build-and-test                 # Only runs if ALL matrix jobs succeed
+    needs: build-and-test
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -48,4 +48,4 @@ jobs:
         with:
           name: weather-app-dist
           path: weather-app-dist.zip
-          retention-days: 5               # Optional: keep artifacts for 5 days
+          retention-days: 7
