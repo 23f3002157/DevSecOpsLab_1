@@ -1,0 +1,9 @@
+{
+  "name": "weather-app",
+  "version": "1.0.0",
+  "description": "Secure weather app demo",
+  "private": true,
+  "scripts": {
+    "test": "node test.js"
+  }
+}
