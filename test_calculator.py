@@ -1,5 +1,12 @@
 import pytest
 from calculator import add, subtract, multiply, divide
+
+def test_power():
+    assert power(2, 3) == 8
+    assert power(5, 0) == 1
+    assert power(-2, 3) == -8
+
+
 def test_add():
        assert add(2, 3) == 5
        assert add(-1, 1) == 0
